@@ -127,8 +127,7 @@ container_logs() {
 container_inspect() {
   name=$1; shift
   if docker ps -a | grep -q $CONTAINER_NAME-$name; then
-    # docker inspect "${@}" $CONTAINER_NAME-$name # requires docker >= 1.9.0
-    docker inspect $CONTAINER_NAME-$name
+    docker inspect "${@}" $CONTAINER_NAME-$name # requires docker >= 1.9.0
   else
     return 1
   fi
